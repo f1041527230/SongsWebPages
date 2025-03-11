@@ -263,10 +263,32 @@
     <script type="text/javascript" src="./js/jquery.placeholder.js"></script>
     <!--for header jquery-->
     <script src="./js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./data/src.js"></script>
+    <script>
+        // 动态加载src.js
+        const script = document.createElement('script');
+        script.src = './data/src.js?v=' + new Date().getTime();
+        script.onload = function () {
 
-    <script type="text/javascript">
-        jQuery(function ($) {
+            // 生成随机颜色
+            function getColorForCategory(category) {
+                // 从localStorage获取已存储的颜色
+                let categoryColors = localStorage.getItem('categoryColors');
+                categoryColors = categoryColors ? JSON.parse(categoryColors) : {};
+
+                if (!categoryColors[category]) {
+                    // 生成柔和的随机颜色
+                    const isBlue = Math.random() > 0.5; // 随机选择蓝色系或紫色系
+                    const hue = isBlue ? 180 + Math.random() * 60 : 250 + Math.random() * 40; // 蓝色180-240或紫色250-290
+                    const saturation = 60 + Math.random() * 10; // 60-70%
+                    const lightness = 75 + Math.random() * 10;  // 75-85%
+                    categoryColors[category] = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+                    
+                    // 将更新后的颜色映射保存到localStorage
+                    localStorage.setItem('categoryColors', JSON.stringify(categoryColors));
+                }
+                return categoryColors[category];
+            }
+
             // 初始化语言选项
             function initLanguageOptions() {
                 const langs = [...new Set(songs.map(song => song.Lang))];
@@ -276,21 +298,6 @@
                         $languages.append($(`<option value="${lang}">${lang}</option>`));
                     }
                 });
-            }
-
-            // 用于存储分类和颜色的映射
-            var categoryColors = {};
-            // 生成随机颜色
-            function getColorForCategory(category) {
-                if (!categoryColors[category]) {
-                    // 生成柔和的随机颜色
-                    const isBlue = Math.random() > 0.5; // 随机选择蓝色系或紫色系
-                    const hue = isBlue ? 180 + Math.random() * 60 : 250 + Math.random() * 40; // 蓝色180-240或紫色250-290
-                    const saturation = 60 + Math.random() * 10; // 60-70%
-                    const lightness = 75 + Math.random() * 10;  // 75-85%
-                    categoryColors[category] = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-                }
-                return categoryColors[category];
             }
 
             // 初始化表格
@@ -347,23 +354,21 @@
                 $('#songs_dis').bootstrapTable('load', filteredSongs);
             }
 
-            // 初始化页面
-            $(document).ready(function () {
-                initLanguageOptions();
-                initTable();
+            initLanguageOptions();
+            initTable();
 
-                // 绑定搜索事件
-                $('#search_btn').on('click', searchSongs);
+            // 绑定搜索事件
+            $('#search_btn').on('click', searchSongs);
 
-                // 绑定重置事件
-                $('#reset').on('click', function () {
-                    $('#fuzzy_key').val('');
-                    $('#singer').val('');
-                    $('#languages').val('');
-                    $('#songs_dis').bootstrapTable('load', songs);
-                });
+            // 绑定重置事件
+            $('#reset').on('click', function () {
+                $('#fuzzy_key').val('');
+                $('#singer').val('');
+                $('#languages').val('');
+                $('#songs_dis').bootstrapTable('load', songs);
             });
-        });
+        };
+        document.head.appendChild(script);
     </script>
 
     <script>
