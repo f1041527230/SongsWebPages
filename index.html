@@ -146,18 +146,8 @@
             box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
         }
 
-        .btn-warning:hover {
-            color: #ffffff;
-        }
-
-        .btn-warning {
-            color: #ffffff;
-        }
-
-        .btn-warning:not(:disabled):not(.disabled).active,
-        .btn-warning:not(:disabled):not(.disabled):active,
-        .show>.btn-warning.dropdown-toggle {
-            color: #ffffff;
+        .pagination-container .text-shadow {
+            font-size: 0.85em;
         }
 
         .songs-row {
@@ -183,7 +173,7 @@
             -webkit-backdrop-filter: blur(10px);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px;
+            padding: 8px;
             margin-bottom: 15px;
         }
 
@@ -195,12 +185,12 @@
 
         .songs-box .songs-item,
         .songs-tips {
-            font-size: .8em;
+            font-size: .7em;
             font-weight: bold;
         }
 
         .songs-box .name {
-            font-size: 1em;
+            font-size: .9em;
             font-weight: bold;
             margin-right: 15px;
         }
@@ -352,6 +342,37 @@
         .gototop i {
             color: #ffffff;
         }
+
+        .custom-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .custom-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .custom-btn i {
+            font-size: 1.2em;
+        }
+
+        .btn-sm {
+            padding: .25rem .5rem;
+            font-size: .875rem;
+        }
     </style>
 </head>
 
@@ -370,7 +391,7 @@
                 <div class="bannerText">
                     <img src="./images/icon/avatar.jpg" class="avatar box-shadow"></img>
                     <h1>阿久_Aku</h1>
-                    <h3>这里是阿久_Aku的歌单小站~</h3>
+                    <h3>这里是阿久_Aku的歌单</h3>
                     <div class="downslide"></div>
                 </div>
             </div>
@@ -385,7 +406,21 @@
                     <div class="col-md-12">
                         <div class="heading">
                             <h2 class="text-shadow">阿久_Aku的歌单</h2>
-                            <h3 class="text-shadow">Enjoy every time back to zero moment, Thank you life is music.</h3>
+                            <!-- <h3 class="text-shadow">Enjoy every time back to zero moment, Thank you life is music.</h3> -->
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="blogroll-wrapper"
+                            style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
+                            <a href="https://space.bilibili.com/3494351384611564" class="custom-btn box-shadow"
+                                title="个人空间">
+                                <i class="fa fa-home"></i>
+                                <span>个人空间</span>
+                            </a>
+                            <a href="https://live.bilibili.com/27948670" class="custom-btn box-shadow" title="直播间">
+                                <i class="fa fa-video-camera"></i>
+                                <span>直播间</span>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -397,19 +432,16 @@
                                 <input type="text" id="singer" class="form-control" placeholder="歌手名字">
                             </div>
                             <div class="col-12 mb-3" style="margin: 0px 5px 10px 5px;">
-                                <select id="languages" class="custom-select form-control"
-                                    style="width: 100%;height: 34px;">
+                                <select id="languages" class="custom-select form-control">
                                     <option value="" selected>歌曲语言筛选</option>
                                 </select>
                             </div>
                             <div class="col-lg-12 col-md-12" style="display: flex; align-items: center;">
-                                <button type="button" class="btn btn-info btn-sm" id="search_btn"
-                                    style="margin-right: 5px;">
-                                    <i class="feather icon-search"></i>搜索
-                                </button>
-                                <button type="button" class="btn btn-warning btn-sm" id="reset">
-                                    <i class="feather icon-rotate-cw"></i>重置
-                                </button>
+                                <a class="custom-btn btn-sm box-shadow" href="#" id="search_btn"
+                                    style="margin-right: 15px;">搜索
+                                </a>
+                                <a class="custom-btn btn-sm box-shadow" href="#" id="reset">重置
+                                </a>
                             </div>
                         </div>
 
@@ -453,8 +485,8 @@
             <div class="container">
                 <div class="heading" style="padding-bottom: 0px;">
                     <h2 class="text-shadow">Get In Touch</h2>
-                    <h3 class="text-shadow">Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi.
-                    </h3>
+                    <!-- <h3 class="text-shadow">Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi.
+                    </h3> -->
                 </div>
             </div>
         </section>
@@ -463,18 +495,25 @@
         <section class="footer" id="footer">
             <div class="container">
                 <ul>
-                    <li class="footer-img box-shadow"><a href="#"><img class="fa-svg fa-2x"
-                                src="./images/icon/RiBilibiliFill.svg" title="Bilibili"></a>
+                    <li class="footer-img box-shadow"><a
+                            href="https://music.163.com/#/artist?id=96507908&userid=544365632"><img class="fa-svg fa-2x"
+                                src="./images/icon/neteaseCloudMusic.svg" title="neteaseCloudMusic"></a>
                     </li>
-                    <li class="footer-img box-shadow"><a href="#"><img class="fa-svg fa-2x"
-                                src="./images/icon/weibo.svg" title="微博"></a></li>
-                    <li class="footer-img box-shadow"><a href="#"><img class="fa-svg fa-2x"
-                                src="./images/icon/Tiktok.svg" title="抖音"></a></li>
+                    <li class="footer-img box-shadow"><a href="https://y.qq.com/n/ryqq/singer/002Rvc7b3JKRS9"><img
+                                class="fa-svg fa-2x" src="./images/icon/qqMusic.svg" title="neteaseCloudMusic"></a>
+                    </li>
+                    <li class="footer-img box-shadow"><a
+                            href="https://www.douyin.com/user/MS4wLjABAAAAILUsXEQalLngXAu_2mAGVG7DOyY5zlgEHchVIrmroj2sB6MyXAVE41Y6hU4zacPA"><img
+                                class="fa-svg fa-2x" src="./images/icon/Tiktok.svg" title="抖音"></a></li>
+                    <li class="footer-img box-shadow"><a
+                            href="https://www.xiaohongshu.com/user/profile/63f1c96f000000000f011efa"><img
+                                class="fa-svg fa-2x" src="./images/icon/Xiaohongshu.svg" title="小红书"></a></li>
                 </ul>
                 <div class="icp-div text-shadow">
-                    本网站由&nbsp;<a href="https://space.bilibili.com/36574609" target="_blank"
-                        class="icp-a">棋子w</a>&nbsp;友情支持&nbsp;|&nbsp;ICP备案/许可证号：<a href="https://beian.miit.gov.cn/"
-                        target="_blank" class="icp-a">蜀ICP备2024097264号</a>
+                    <!-- 本网站由&nbsp;<a href="#" target="_blank" class="icp-a">棋子w</a>&nbsp;友情支持&nbsp;|&nbsp;ICP备案/许可证号：<a
+                        href="https://beian.miit.gov.cn/" target="_blank" class="icp-a">蜀ICP备2024097264号</a> -->
+                    本网站由&nbsp;<a href="#" target="_blank" class="icp-a">棋子w</a>&nbsp;友情支持&nbsp;|&nbsp;All Rights
+                    Reserved.
                 </div>
             </div>
             <p class="text-center"><a href="#wrapper" class="gototop box-shadow"><i
@@ -633,10 +672,14 @@
             renderSongs(songs);
 
             // 绑定搜索事件
-            $('#search_btn').on('click', searchSongs);
+            $('#search_btn').on('click', function (e) {
+                e.preventDefault();
+                searchSongs();
+            });
 
             // 绑定重置事件
-            $('#reset').on('click', function () {
+            $('#reset').on('click', function (e) {
+                e.preventDefault();
                 $('#fuzzy_key').val('');
                 $('#singer').val('');
                 $('#languages').val('');
